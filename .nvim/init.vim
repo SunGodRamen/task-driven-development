@@ -6,8 +6,7 @@ autocmd VimEnter * echo "Welcome to the task realm"
 command! Drawio !open -a "draw.io" %:p:h/drawio.html
 " command! Drawio !drawio %:p:h/drawio.html
 
-
-"  Default nvim for template
+"   Default nvim commands for project template
 " Add a command to create a new Taskwarrior task
 vim.cmd("command! TaskNew !taskp add")
   
