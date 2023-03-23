@@ -1,0 +1,13 @@
+#!/usr/bin/env  bash
+
+# Run the check_branch_name script
+./check_branch_name.sh
+
+# Check the script's exit status
+if [ $? -ne 0 ]; then
+  echo "Error: Branch name must be linked to a Taskwarrior task ID."
+  exit 1
+fi
+
+# If everything is fine, allow the commit
+exit 0

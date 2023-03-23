@@ -1,0 +1,27 @@
+#!/usr/bin/env  bash
+
+# Get the list of new files with code filetypes
+# Supported languages:
+# Python, JavaScript, Java, C, C++, C#, Ruby, PHP, HTML, CSS, Sass, LESS,
+# XML, YAML, JSON, Bash, PowerShell, Perl, Tcl, Go, Swift, Objective-C,
+# Objective-C++, Scala, Groovy, Kotlin, Rust, Lua, CoffeeScript, Dart
+new_files=$(git diff --cached --name-status --diff-filter=A | grep -E '\.(py|js|java|c|cpp|cs|rb|php|html|css|scss|less|xml|yaml|yml|json|sh|bash|ps1|psm1|pl|pm|tcl|go|swift|h|m|mm|scala|groovy|kt|kts|rs|rust|lua|coffee|dart|rs)$'
+
+# If no new files are added, allow the push
+if [ -z "$new_files" ]; then
+  exit 0
+fi
+
+# Run the parse_drawio script to extract diagram elements
+diagram_elements=$(bash scripts/parse_drawio.sh .drawio/drawio.html)
+
+# Check if the new filenames are in the diagram elements
+for new_file in $new_files; do
+  if [[ ! $diagram_elements == *"$new_file"* ]]; then
+    echo "Error: The diagram must be updated with the new file: $new_file"
+    exit 1
+  fi
+done
+
+# If everything is fine, allow the push
+exit 0
