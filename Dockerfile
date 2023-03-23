@@ -10,7 +10,7 @@ RUN apt-get update && \
 #RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
 #    apt-get install -y nodejs
 
-# Install Ruby for Ruby HTTP endpoint development
+# Install Ruby for Ruby development
 #RUN apt-get install -y ruby ruby-dev
 
 # Install Rust for Rust development
@@ -50,9 +50,12 @@ COPY ./.nvim /home/${USER}/.nvim
 COPY ./.taskrc /home/${USER}/.taskrc
 COPY ./.gitignore /home/${USER}/.gitignore
 COPY ./project-taskwarrior.zsh /home/${USER}/.project-taskwarrior.zsh
+COPY ./.git_hooks /home/${USER}/.git_hooks
+
 
 # Set up the user's shell configuration
 RUN echo 'source ~/.project-taskwarrior.zsh' >> /home/${USER}/.zshrc
+RUN echo 'git config --global init.templateDir ~/.git_hooks' >> /home/${USER}/.zshrc
 
 # Set the entrypoint for the container
 ENTRYPOINT ["zsh"]
