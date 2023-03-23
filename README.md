@@ -24,8 +24,10 @@
 │   ├── pre-commit
 │   └── pre-push
 ├── .nvim/
-│   └── init.lua
+│   ├── project-config.vim
+│   └── init.vim
 ├── .task/
+│   ├── project-tasklist.zsh
 │   ├── backlog.data
 │   ├── completed.data
 │   ├── pending.data
