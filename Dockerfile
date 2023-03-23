@@ -3,8 +3,15 @@ FROM ubuntu:latest
 
 # Install dependencies and required tools
 RUN apt-get update && \
-    apt-get install -y neovim git taskwarrior zsh curl xdg-utils && \
+    apt-get install -y neovim git taskwarrior zsh curl xdg-utils build-essential && \
     apt-get clean
+
+# Install Node.js for React development
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
+    apt-get install -y nodejs
+
+# Install Ruby for Ruby HTTP endpoint development
+RUN apt-get install -y ruby ruby-dev
 
 # Install the draw.io desktop app (use the appropriate installation method for your base distribution)
 RUN curl -L https://github.com/jgraph/drawio-desktop/releases/download/v14.6.13/draw.io-amd64-14.6.13.deb -o drawio.deb && \
