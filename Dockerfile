@@ -7,21 +7,38 @@ RUN apt-get update && \
     apt-get clean
 
 # Install Node.js for React development
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
-    apt-get install -y nodejs
+#RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
+#    apt-get install -y nodejs
 
 # Install Ruby for Ruby HTTP endpoint development
-RUN apt-get install -y ruby ruby-dev
+#RUN apt-get install -y ruby ruby-dev
 
-# Install the draw.io desktop app (use the appropriate installation method for your base distribution)
-RUN curl -L https://github.com/jgraph/drawio-desktop/releases/download/v14.6.13/draw.io-amd64-14.6.13.deb -o drawio.deb && \
-    apt-get install -y ./drawio.deb && \
-    rm drawio.deb
+# Install Rust for Rust development
+#RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+#ENV PATH="/home/developer/.cargo/bin:${PATH}"
+
+# Install C and C++ compilers and tools
+#RUN apt-get install -y gcc g++ make cmake
+
+# Install Java for Java development
+#RUN apt-get install -y default-jdk maven
+
+# Install Kafka for Kafka development
+#RUN apt-get install -y zookeeperd kafka-server
+
+# Install Python for Python development
+#RUN apt-get install -y python3 python3-pip
+
+# Install Lisp for Lisp development
+#RUN apt-get install -y sbcl
+
+# Install Lua for Lua development
+#RUN apt-get install -y lua5.3
 
 # Set up the user environment
 ARG USER=developer
-ARG UID=1000
-ARG GID=1000
+ARG UID=4000
+ARG GID=1111
 RUN groupadd --gid "$GID" "$USER" && \
     useradd --uid "$UID" --gid "$GID" --create-home --shell /bin/zsh "$USER"
 
