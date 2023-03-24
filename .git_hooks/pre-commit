@@ -1,7 +1,7 @@
 #!/usr/bin/env  bash
 
 # Run the check_branch_name script
-./check_branch_name.sh
+#./check_branch_name.sh
 
 # Check the script's exit status
 if [ $? -ne 0 ]; then

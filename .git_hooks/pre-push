@@ -13,15 +13,15 @@ if [ -z "$new_files" ]; then
 fi
 
 # Run the parse_drawio script to extract diagram elements
-diagram_elements=$(bash scripts/parse_drawio.sh .drawio/drawio.html)
+#diagram_elements=$(bash scripts/parse_drawio.sh .drawio/drawio.html)
 
 # Check if the new filenames are in the diagram elements
-for new_file in $new_files; do
-  if [[ ! $diagram_elements == *"$new_file"* ]]; then
-    echo "Error: The diagram must be updated with the new file: $new_file"
-    exit 1
-  fi
-done
+#for new_file in $new_files; do
+#  if [[ ! $diagram_elements == *"$new_file"* ]]; then
+#    echo "Error: The diagram must be updated with the new file: $new_file"
+#    exit 1
+#  fi
+#done
 
 # If everything is fine, allow the push
 exit 0

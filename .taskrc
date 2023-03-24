@@ -1,2 +1,6 @@
 data.location=/Users/AVONSTU1/Code/sungodra/qmk_driver/.task
 hooks.location=/Users/AVONSTU1/Code/sungodra/qmk_driver/.task/hooks
+
+uda.hexid.type=string
+uda.hexid.label=HexID
+
