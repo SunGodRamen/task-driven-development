@@ -17,7 +17,7 @@
 </ol>
 <h2>Project Template Structure</h2>
 <p>The project template includes the following files and directories:</p>
-<pre><div class="bg-black rounded-md mb-4"><div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>kotlin</span><button class="flex ml-auto gap-2"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>Copy code</button></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-kotlin">project_name/
+<pre><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-kotlin">project_name/
 ├── .drawio/
 │   └── diagram.drawio.html
 ├── .git_hooks/
@@ -35,7 +35,7 @@
 ├── .README.md
 ├── .taskrc
 └── .gitignore
-</code></div></div></pre>
+</code></div></pre>
 <h3>Neovim Configuration</h3>
 <p>The <code>project-config.lua</code> file is sourced in the user's <code>init.vim</code> and loads the
   project-specific Neovim configuration from the <code>.nvim/init.lua</code> file located at the project root.</p>
@@ -72,52 +72,3 @@
 </ol>
 <p>With this setup, you can use Neovim, Taskwarrior, Draw.io, and Git seamlessly in your project while maintaining
   consistency between tasks, diagrams, and code changes.</p>
-<h1>Project Template with Docker</h1>
-<p>This project template provides a consistent and reproducible development environment using Docker. The environment
-  includes Neovim, Taskwarrior, Draw.io, Git, Node.js, and Ruby, with custom configurations and integrations for
-  seamless interaction between these tools.</p>
-<h2>Prerequisites</h2>
-<p>To use this Docker-based development environment, you need to have Docker installed on your system. Visit the <a
-    href="https://docs.docker.com/get-docker/" target="_new">official Docker website</a> for installation
-  instructions.</p>
-<h2>Building the Docker Image</h2>
-<ol>
-  <li>
-    <p>Clone the repository:</p>
-    <pre><div class="bg-black rounded-md mb-4"><div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>bash</span><button class="flex ml-auto gap-2"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>Copy code</button></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">git <span class="hljs-built_in">clone</span> https://github.com/your-username/your-project-template.git
-<span class="hljs-built_in">cd</span> your-project-template
-</code></div></div></pre>
-  </li>
-  <li>
-    <p>Build the Docker image:</p>
-    <pre><div class="bg-black rounded-md mb-4"><div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><button class="flex ml-auto gap-2"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>Copy code</button></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs">docker build -t your-image-name .
-</code></div></div></pre>
-    <p>Replace <code>your-image-name</code> with a name of your choice for the Docker image.</p>
-  </li>
-</ol>
-<h2>Running the Docker Container</h2>
-<ol>
-  <li>
-    <p>Run the Docker container, mounting your project directory:</p>
-    <pre><div class="bg-black rounded-md mb-4"><div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>bash</span><button class="flex ml-auto gap-2"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>Copy code</button></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-bash">docker run -it --<span class="hljs-built_in">rm</span> -p 3000:3000 -p 8080:8080 -v /path/to/your/proj:/home/developer/proj your-image-name
-</code></div></div></pre>
-    <p>Replace <code>/path/to/your/proj</code> with the path to your project directory on the host machine.</p>
-    <p>This command will expose ports 3000 and 8080 from the container to the host, allowing you to access web
-      applications served on these ports.</p>
-  </li>
-  <li>
-    <p>The container will start a Zsh shell session. From here, you can use Neovim, Taskwarrior, Draw.io, Git,
-      Node.js, and Ruby as you normally would in your development environment.</p>
-  </li>
-</ol>
-<h2>Accessing Web Applications</h2>
-<p>If you start a web server or web application inside the container, it will be accessible on the host machine's
-  browser. For example:</p>
-<ul>
-  <li>If you start a React app on port 3000 inside the container, visit <code>http://localhost:3000</code> on the host
-    machine's browser.</li>
-  <li>If you start a Ruby HTTP endpoint on port 8080 inside the container, visit <code>http://localhost:8080</code> on
-    the host machine's browser.</li>
-</ul>
-<p>To access the Draw.io diagram, you can either serve it as a static file using a web server or directly open the
-  file in the host machine's browser, given that the project directory is mounted to the container.</p>
